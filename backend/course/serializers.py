@@ -28,3 +28,24 @@ class CourseProgressSerializer(serializers.ModelSerializer):
         model = CourseProgress
         fields = ['id', 'user', 'course', 'completed_lessons', 'completed_at']
         read_only_fields = ['user']
+
+
+# serializers.py
+from rest_framework import serializers
+from .models import Challenge
+
+class ChallengeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Challenge
+        fields = '__all__'
+        read_only_fields = ('creator', 'created_at')
+
+# serializers.py
+from rest_framework import serializers
+from .models import ChallengeProgress
+
+class ChallengeProgressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChallengeProgress
+        fields = '__all__'
+        read_only_fields = ('user', 'started_at', 'completed_at')

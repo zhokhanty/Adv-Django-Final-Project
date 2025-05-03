@@ -20,4 +20,14 @@ urlpatterns = [
     # Квизы
     path('lessons/<int:lesson_id>/quizzes/', QuizListCreateView.as_view(), name='quiz-list-create'),
     path('quizzes/<int:pk>/', QuizDetailView.as_view(), name='quiz-detail'),
+
+    # challenge
+    path('', ChallengeListView.as_view(), name='challenge-list'),
+    path('create/', ChallengeCreateView.as_view(), name='challenge-create'),
+    path('<int:pk>/', ChallengeDetailView.as_view(), name='challenge-detail'),
+    path('<int:pk>/update/', ChallengeUpdateView.as_view(), name='challenge-update'),
+    path('<int:pk>/delete/', ChallengeDeleteView.as_view(), name='challenge-delete'),
+    path('<int:challenge_id>/start/', StartChallengeView.as_view(), name='challenge-start'),
+    path('<int:challenge_id>/complete/<int:day>/', CompleteDayView.as_view(), name='challenge-complete-day'),
+
 ]
