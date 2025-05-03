@@ -7,6 +7,12 @@ from rest_framework import generics, permissions
 from .models import Lesson, Quiz
 from .serializers import LessonSerializer, QuizSerializer
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Challenge, ChallengeProgress
+from .serializers import ChallengeProgressSerializer
+from django.utils import timezone
 
 # ==== LESSON ====
 
@@ -94,3 +100,64 @@ class CourseProgressUpdateView(generics.UpdateAPIView):
 
     def get_queryset(self):
         return CourseProgress.objects.filter(user=self.request.user)
+    
+
+
+from rest_framework import generics, permissions
+from .models import Challenge
+from .serializers import ChallengeSerializer
+from users.permissions import IsMentorOrReadOnly
+
+class ChallengeListView(generics.ListAPIView):
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ChallengeCreateView(generics.CreateAPIView):
+    serializer_class = ChallengeSerializer
+    permission_classes = [IsMentorOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(creator=self.request.user)
+
+class ChallengeDetailView(generics.RetrieveAPIView):
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ChallengeUpdateView(generics.UpdateAPIView):
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer
+    permission_classes = [IsMentorOrReadOnly]
+
+class ChallengeDeleteView(generics.DestroyAPIView):
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer
+    permission_classes = [IsMentorOrReadOnly]
+
+
+class StartChallengeView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, challenge_id):
+        challenge = Challenge.objects.get(id=challenge_id)
+        progress, created = ChallengeProgress.objects.get_or_create(
+            user=request.user,
+            challenge=challenge
+        )
+        if not created:
+            return Response({"detail": "Вы уже начали этот челлендж."}, status=400)
+        return Response(ChallengeProgressSerializer(progress).data)
+
+class CompleteDayView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, challenge_id, day):
+        progress = ChallengeProgress.objects.get(user=request.user, challenge_id=challenge_id)
+        if day not in progress.completed_days:
+            progress.completed_days.append(day)
+            progress.current_day = max(progress.current_day, day + 1)
+        if len(progress.completed_days) >= progress.challenge.days:
+            progress.completed_at = timezone.now()
+        progress.save()
+        return Response(ChallengeProgressSerializer(progress).data)
