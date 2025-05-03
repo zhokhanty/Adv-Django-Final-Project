@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = "xl98+tmx5t5mq)!hesp^b_!bwk_bo(*r2icv8hviz)x#l)969x"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'requests',
+    'course'
 ]
 
 AUTHENTICATION_BACKENDS = (
