@@ -19,11 +19,9 @@ def verify_2fa(request):
 def setup_2fa(request):
     user = request.user
 
-    # Generate and save OTP secret if not exists
     if not user.otp_secret:
         user.otp_secret = generate_otp_secret()
         user.save()
 
-    # Generate QR code URI (to be used with Google Authenticator)
     qr_code_uri = get_qr_code_uri(user)
     return Response({'otp_secret': user.otp_secret, 'qr_code_uri': qr_code_uri})

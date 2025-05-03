@@ -27,4 +27,5 @@ urlpatterns = [
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('auth/social/', include('allauth.socialaccount.urls')),
     path('users/', include('users.urls')),
+    path('', include('django_prometheus.urls')),
 ]
