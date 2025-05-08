@@ -3,11 +3,11 @@ from .views import *
 
 urlpatterns = [
     # Курсы
-    path('', CourseListView.as_view(), name='course-list'),
-    path('<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
-    path('create/', CourseCreateView.as_view(), name='course-create'),
-    path('<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
-    path('<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
+    path('course/', CourseListView.as_view(), name='course-list'),
+    path('course/<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
+    path('course/create/', CourseCreateView.as_view(), name='course-create'),
+    path('course/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
+    path('course/<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
 
     # Прогресс
     path('progress/', CourseProgressListCreateView.as_view(), name='course-progress'),
@@ -23,11 +23,11 @@ urlpatterns = [
 
     # challenge
     path('', ChallengeListView.as_view(), name='challenge-list'),
-    path('create/', ChallengeCreateView.as_view(), name='challenge-create'),
-    path('<int:pk>/', ChallengeDetailView.as_view(), name='challenge-detail'),
-    path('<int:pk>/update/', ChallengeUpdateView.as_view(), name='challenge-update'),
-    path('<int:pk>/delete/', ChallengeDeleteView.as_view(), name='challenge-delete'),
-    path('<int:challenge_id>/start/', StartChallengeView.as_view(), name='challenge-start'),
-    path('<int:challenge_id>/complete/<int:day>/', CompleteDayView.as_view(), name='challenge-complete-day'),
+    path('challenge/create/', ChallengeCreateView.as_view(), name='challenge-create'),
+    path('challenge/<int:pk>/', ChallengeDetailView.as_view(), name='challenge-detail'),
+    path('challenge/<int:pk>/update/', ChallengeUpdateView.as_view(), name='challenge-update'),
+    path('challenge/<int:pk>/delete/', ChallengeDeleteView.as_view(), name='challenge-delete'),
+    path('challenge/<int:challenge_id>/start/', StartChallengeView.as_view(), name='challenge-start'),
+    path('challenge/<int:challenge_id>/complete/<int:day>/', CompleteDayView.as_view(), name='challenge-complete-day'),
 
 ]

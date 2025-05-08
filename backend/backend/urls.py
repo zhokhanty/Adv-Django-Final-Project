@@ -28,5 +28,5 @@ urlpatterns = [
     path('auth/social/', include('allauth.socialaccount.urls')),
     path('users/', include('users.urls')),
     path('', include('django_prometheus.urls')),
-    path('course/', include('course.urls')),
+    path('api/', include('course.urls')),
 ]

@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'requests',
-    'course'
+    'course',
+    'corsheaders',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -74,7 +75,10 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_prometheus.middleware.PrometheusAfterMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -107,7 +111,7 @@ DATABASES = {
         'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', '0510'),
         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DATABASE_PORT', 5433),
+        'PORT': os.getenv('DATABASE_PORT', 5432),
     }
 }
 

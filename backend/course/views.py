@@ -1,18 +1,29 @@
+from django.utils import timezone
 from rest_framework import generics, permissions
-from .models import Course, Lesson, Quiz, CourseProgress
-from .serializers import CourseSerializer, LessonSerializer, QuizSerializer, CourseProgressSerializer
-from users.permissions import IsMentorOrReadOnly
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics, permissions
-from .models import Lesson, Quiz
-from .serializers import LessonSerializer, QuizSerializer
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Challenge, ChallengeProgress
-from .serializers import ChallengeProgressSerializer
-from django.utils import timezone
+
+from .models import (
+    Course,
+    Lesson,
+    Quiz,
+    CourseProgress,
+    Challenge,
+    ChallengeProgress,
+)
+
+from .serializers import (
+    CourseSerializer,
+    LessonSerializer,
+    QuizSerializer,
+    CourseProgressSerializer,
+    ChallengeSerializer,
+    ChallengeProgressSerializer,
+)
+
+from users.permissions import IsMentorOrReadOnly
+
 
 # ==== LESSON ====
 
@@ -100,13 +111,6 @@ class CourseProgressUpdateView(generics.UpdateAPIView):
 
     def get_queryset(self):
         return CourseProgress.objects.filter(user=self.request.user)
-    
-
-
-from rest_framework import generics, permissions
-from .models import Challenge
-from .serializers import ChallengeSerializer
-from users.permissions import IsMentorOrReadOnly
 
 class ChallengeListView(generics.ListAPIView):
     queryset = Challenge.objects.all()
