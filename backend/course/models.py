@@ -32,16 +32,24 @@ class CourseProgress(models.Model):
     completed_lessons = models.ManyToManyField(Lesson, blank=True)
     completed_at = models.DateTimeField(null=True, blank=True)
 
-
-
-# models.py
 class Challenge(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='challenges')
-    days = models.PositiveIntegerField(choices=[(7, '7 дней'), (30, '30 дней')])
-    tags = models.JSONField(default=list)
-    created_at = models.DateTimeField(auto_now_add=True)
+    duration_days = models.PositiveIntegerField()
+    start_date = models.DateTimeField(null=True, blank=True)
+    end_date = models.DateTimeField(null=True, blank=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_challenges', null=True)
+
+    def add_user(self, user):
+        if ChallengeProgress.objects.filter(challenge=self, user=user).exists():
+            return None
+
+        progress = ChallengeProgress.objects.create(
+            user=user,
+            challenge=self,
+            completed_days=[],
+        )
+        return progress
 
 class ChallengeProgress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='challenge_progress')

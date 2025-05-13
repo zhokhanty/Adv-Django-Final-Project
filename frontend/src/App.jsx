@@ -1,35 +1,24 @@
-import { useState, useEffect } from 'react';
-import Course from './components/Course';
-import Login from './components/Login';
-import Register from './components/Register';
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import CoursesPage from "./pages/Courses";
+import Challenges from "./pages/Challenges";
+import { AuthProvider } from "./pages/AuthPage/AuthContext";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import Layout from "./components/Layout/Layout";
+import LessonsPage from "./pages/Lessons";
 
-function App() {
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8000/api/course/')
-      .then(res => res.json())
-      .then(data => setCourses(data));
-  }, []);
-
+export default function App() {
   return (
-    <div>
-      <h1>Auth Demo</h1>
-      <Login />
-      <hr />
-      <Register />
-      <h1>Courses</h1>
-      {courses.map(course => (
-        <Course
-          key={course.id}
-          title={course.title}
-          description={course.description}
-          duration={course.duration_minutes}
-          tags={course.tags}
-        />
-      ))}
-    </div>
+    <AuthProvider>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/courses/:course_id/lessons" element={<LessonsPage />} />
+        <Route path="/challenges" element={<Challenges />} />
+      </Route>
+      <Route path="/auth" element={<AuthPage />} />
+    </Routes>
+    </AuthProvider>
   );
 }
-
-export default App;
