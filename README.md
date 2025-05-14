@@ -1,63 +1,147 @@
 # Adv-Django-Final-Project
 
-Проект: “SkillSphere” — Образовательная соцсеть с ИИ-наставниками
 
-🔍 Идея:
+# **SkillSphere Platform Documentation**
 
-SkillSphere — это платформа, объединяющая людей, которые хотят учиться и делиться знаниями. Каждый пользователь может:
-	•	Создавать мини-курсы, статьи, челленджи
-	•	Проходить обучение и получать сертификаты
-	•	Получать помощь от ИИ-наставника и комьюнити
+## **Overview**
 
-⸻
+**SkillSphere** is a collaborative learning platform where users can create and join mini-courses, articles, and challenges, interact with AI mentors, and receive certifications.
 
-🧑‍🎓 Основные роли:
-	•	Learner — проходит курсы, участвует в челленджах
-	•	Mentor — создаёт курсы, помогает другим
-	•	Admin — модерирует контент и пользователей
 
-⸻
 
-🔧 Основной функционал:
+## **User Roles**
 
-👨‍🏫 Обучение:
-	•	Создание мини-курсов (тексты, видео, тесты, задания)
-	•	Прохождение с прогресс-барами и автопроверкой
-	•	Система челленджей на 7/30 дней (типа “30 дней Python”)
-	•	Генерация персональных путей обучения через AI (например: “Хочу стать Frontend-разработчиком → вот твой roadmap”)
+1. **Learner**
 
-🤖 AI-фичи:
-	•	ИИ-наставник (на базе OpenAI): можно задать вопросы, попросить объяснить темы
-	•	Анализ ошибок в коде / заданиях
-	•	Автоматическая генерация квизов и тестов по загруженному материалу
+   * Takes courses and challenges
+   * Participates in forums
+   * Earns certificates and achievements
 
-📚 Комьюнити:
-	•	Профили пользователей с достижениями и навыками
-	•	Форумы по темам (встроенный markdown + голосование за ответы)
-	•	Система взаимного наставничества: “Я учу Vue, но могу помочь с Python”
+2. **Mentor**
 
-🎓 Сертификаты:
-	•	PDF-сертификаты после курсов
-	•	Умный профиль, интегрируемый в LinkedIn
+   * Creates mini-courses and quizzes
+   * Provides help and feedback to other users
+   * Participates in mutual mentoring
 
-⸻
+3. **Admin**
 
-🧱 Технологии:
+   * Manages users and content
+   * Moderates forums and reports
+   * Oversees platform integrity
 
-Backend (Django + DRF):
-	•	PostgreSQL для пользователей и курсов
-	•	MongoDB для хранения чатов, AI-ответов и форумов
-	•	Celery + Redis — фоновая проверка заданий, генерация сертификатов
-	•	OpenAI / HuggingFace API — для AI-наставника
+---
 
-Frontend (Vue.js + Vuetify):
-	•	Красивый прогрессбар обучения
-	•	Просмотр курсов, тестов, форумов
-	•	Редактор для создания курсов с drag & drop
+## **Core Features**
 
-⸻
+### **1. Learning System**
 
-🚀 Уникальные фишки:
-	•	AI-наставник может объяснить любой материал из курса и сгенерировать аналогичные задачи
-	•	Совместное обучение: можно приглашать друзей пройти курс вместе
-	•	Умные напоминания — push/email, основанные на привычках пользователя
+* **Course Creation**
+
+  * Add text, video, quizzes, and assignments
+  * Drag & Drop editor for structuring content
+  * Progress bars and checkpoints
+  * AI-generated quizzes based on content
+
+* **Challenges**
+
+  * 7-day / 30-day structured activities
+  * Examples: “30 Days of Python”, “7-Day Design Sprint”
+
+
+* **Progress Tracking**
+
+  * Monitor completion of lessons and quizzes
+  * Automatic grading and feedback
+
+---
+
+### **2. AI Features**
+
+* **AI Mentor (OpenAI-based)**
+
+  * Answers questions in natural language
+  * Explains course concepts
+  * Provides personalized suggestions
+
+* **Quiz and Test Generation**
+
+  * Automatically generate questions from uploaded content
+
+* **Error Analysis**
+
+  * Reviews user code or submissions and provides corrections or hints
+
+---
+
+### **3. Community**
+
+* **User Profiles**
+
+  * Skills, badges, completed courses
+  * Downloadable, shareable resume
+  * LinkedIn integration
+
+
+### **4. Certification System**
+
+* **Smart Certificates**
+
+  * Auto-generated PDF upon course completion
+  * Stored in profile, downloadable
+  * Includes course title, user name, completion date
+
+* **LinkedIn Integration**
+
+  * One-click sharing of certifications
+
+---
+
+## **Tech Stack**
+
+### **Backend (Django + DRF)**
+
+* **PostgreSQL** – relational data (users, courses, certifications)
+* **MongoDB** – forums, AI chat history
+* **Celery + Redis** – background tasks (e.g., certificate generation, reminders)
+* **OpenAI / HuggingFace APIs** – AI mentor, quiz generation, feedback
+
+Frontend (React + Tailwind CSS)
+Drag & drop course builder (e.g., with dnd-kit or react-beautiful-dnd)
+Responsive UI built with Tailwind CSS
+Real-time progress tracking with interactive components
+Forum threads, markdown rendering, voting
+Mobile-first design and dark mode support
+
+
+
+
+## **APIs Overview**
+
+### **Auth and User Management**
+
+* `POST /api/register/`
+* `POST /api/login/`
+* `GET /api/profile/`
+
+### **Courses and Lessons**
+
+* `GET /api/courses/`
+* `POST /api/courses/`
+* `GET /api/courses/<id>/lessons/`
+
+
+### **Certifications**
+
+* `GET /api/certificates/`
+* `POST /api/certificates/generate/`
+
+
+
+## **Future Enhancements**
+
+* Gamification: XP, badges, ranking
+* AI-based skill gap analysis
+* Marketplace for premium courses
+* Live sessions & chat rooms
+* Multilingual support
+
