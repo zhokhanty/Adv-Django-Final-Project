@@ -20,6 +20,9 @@ class Lesson(models.Model):
     video_url = models.URLField(blank=True, null=True)
     order = models.PositiveIntegerField()
 
+    def __str__(self):
+        return f'{self.title} (Course #{self.course_id})'
+
 class Quiz(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='quizzes')
     question = models.TextField()
@@ -39,5 +42,9 @@ class CourseProgress(models.Model):
     certificate_issued = models.BooleanField(default=False)
 
     class Meta:
+<<<<<<< HEAD
         unique_together = ('user', 'course')
 
+=======
+        unique_together = ('user', 'course')
+>>>>>>> 8b36afb534a4a298b0e49ace885054b8eb8cd613

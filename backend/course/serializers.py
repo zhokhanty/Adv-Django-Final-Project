@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import Course, Lesson, Quiz
-
-
 from .models import Course, Lesson, Quiz, CourseProgress
 
+<<<<<<< HEAD
 from .models import Course, Lesson, Quiz, CourseProgress
 
 
+=======
+>>>>>>> 8b36afb534a4a298b0e49ace885054b8eb8cd613
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
@@ -26,7 +26,6 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ['id', 'title', 'description', 'creator', 'created_at', 'updated_at', 'duration_minutes', 'tags', 'lessons']
-
 
 class CourseProgressSerializer(serializers.ModelSerializer):
     class Meta:

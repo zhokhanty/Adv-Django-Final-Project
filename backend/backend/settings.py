@@ -37,6 +37,10 @@ ALLOWED_HOSTS =[]
 
 # Application definition
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -110,12 +114,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME', 'final_db'),
+        'NAME': os.getenv('DATABASE_NAME', 'sample'),
         'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', '0510'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '1000tenge'),
         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DATABASE_PORT', 5433),
-
+        'PORT': os.getenv('DATABASE_PORT', 5432),
     }
 }
 
@@ -184,7 +187,6 @@ MONGO_DB_NAME = "skillsphere_ai"
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 
-# settings.py
 from dotenv import load_dotenv
 import os
 

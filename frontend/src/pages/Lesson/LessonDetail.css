@@ -1,0 +1,37 @@
+.lesson-detail-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+  
+  .lesson-title {
+    font-size: 2rem;
+    color: #1a202c;
+    margin-bottom: 1rem;
+  }
+  
+  .lesson-content {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .video-section {
+    margin-top: 2rem;
+  }
+  
+  .video-section h4 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .video-section video {
+    width: 100%;
+    border-radius: 8px;
+  }
+  

@@ -1,43 +1,48 @@
-/* Course Card Styles */
 .course-card {
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 24px;
-    margin-bottom: 24px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eaeaea;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .course-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
   
   .course-header {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1rem;
   }
   
   .course-title {
     font-size: 1.5rem;
     font-weight: 600;
     color: #2d3748;
-    margin: 0 0 8px 0;
+    margin: 0 0 0.5rem 0;
   }
   
   .course-description {
     color: #4a5568;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 1rem;
   }
   
   .course-meta {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #edf2f7;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
   }
   
   .meta-item {
@@ -48,7 +53,7 @@
   .meta-label {
     font-size: 0.875rem;
     color: #718096;
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
   }
   
   .meta-value {
@@ -59,13 +64,13 @@
   .tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 0.5rem;
   }
   
   .tag {
     background-color: #edf2f7;
     color: #2d3748;
-    padding: 4px 10px;
+    padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -73,17 +78,15 @@
   
   .course-actions {
     display: flex;
-    gap: 16px;
+    justify-content: flex-end;
   }
   
   .action-btn {
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
     font-weight: 600;
     text-decoration: none;
-    text-align: center;
-    transition: all 0.2s ease;
-    flex: 1;
+    transition: all 0.3s ease;
   }
   
   .action-btn.primary {
@@ -94,27 +97,5 @@
   .action-btn.primary:hover {
     background-color: #3a56d4;
     transform: translateY(-2px);
-  }
-  
-  .action-btn.secondary {
-    background-color: white;
-    color: #4361ee;
-    border: 2px solid #4361ee;
-  }
-  
-  .action-btn.secondary:hover {
-    background-color: #f0f4ff;
-    transform: translateY(-2px);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .course-meta {
-      grid-template-columns: 1fr;
-    }
-    
-    .course-actions {
-      flex-direction: column;
-      gap: 12px;
-    }
+    box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
   }
