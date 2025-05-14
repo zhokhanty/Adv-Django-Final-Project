@@ -41,5 +41,7 @@ class CourseProgress(models.Model):
 
     certificate_issued = models.BooleanField(default=False)
 
+
     class Meta:
         unique_together = ('user', 'course')
+

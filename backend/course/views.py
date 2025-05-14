@@ -14,12 +14,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 
 
-from rest_framework import viewsets
-
 from .pdf_utils import generate_certificate_pdf
-
-
-from rest_framework import viewsets
 
 from .pdf_utils import generate_certificate_pdf
 
