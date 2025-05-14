@@ -18,6 +18,8 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import (
     TokenObtainPairView, TokenRefreshView
 )
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +31,9 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('', include('django_prometheus.urls')),
     path('api/', include('course.urls')),
+    path('c/', include('challenges.urls')),
+    path('ai/', include('ai_tutor.urls'))
+    
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

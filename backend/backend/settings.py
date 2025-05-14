@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'requests',
     'course',
     'corsheaders',
+    'challenges',
+    'ai_tutor',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -109,9 +111,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME', 'final_db'),
         'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', '1000tenge'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '0510'),
         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DATABASE_PORT', 5432),
+        'PORT': os.getenv('DATABASE_PORT', 5433),
     }
 }
 
@@ -171,3 +173,17 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'users.User'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MONGO_URI = "mongodb://localhost:27017/"
+MONGO_DB_NAME = "skillsphere_ai"
+
+# settings.py
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
