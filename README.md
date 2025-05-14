@@ -7,7 +7,10 @@
 
 **SkillSphere** is a collaborative learning platform where users can create and join mini-courses, articles, and challenges, interact with AI mentors, and receive certifications.
 
-
+##Team Members:
+  * Bagytzhan Zhalgas
+  * Tolegen Nursultan
+  * Yerdana Adilet
 
 ## **User Roles**
 
