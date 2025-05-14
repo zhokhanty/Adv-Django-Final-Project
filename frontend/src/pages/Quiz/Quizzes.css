@@ -1,0 +1,46 @@
+.quiz-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  .question {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .options {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .option {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: background 0.2s ease;
+  }
+  
+  .option:hover {
+    background-color: #eee;
+  }
+  
+  .option.correct {
+    background-color: #c8f7c5;
+    border-color: #3c763d;
+  }
+  
+  .option.incorrect {
+    background-color: #f2dede;
+    border-color: #a94442;
+  }
+  
+  .result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

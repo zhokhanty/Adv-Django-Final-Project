@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './CourseCard.css';
 
 export default function CourseCard({ 
-  id,
+  courseId,
   title, 
   description, 
   creator, 
@@ -11,7 +11,6 @@ export default function CourseCard({
   tags, 
   created_at 
 }) {
-  // Format date
   const formattedDate = new Date(created_at).toLocaleDateString('ru-RU', {
     day: '2-digit',
     month: '2-digit',
@@ -51,11 +50,8 @@ export default function CourseCard({
       </div>
 
       <div className="course-actions">
-        <Link to={`/courses/${id}/lessons`} className="action-btn primary">
+        <Link to={`/courses/${courseId}/lessons`} className="action-btn primary">
           Начать обучение
-        </Link>
-        <Link to={`/courses/${id}/challenges`} className="action-btn secondary">
-          Принять вызов
         </Link>
       </div>
     </div>

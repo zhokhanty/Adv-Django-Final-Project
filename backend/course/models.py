@@ -20,6 +20,9 @@ class Lesson(models.Model):
     video_url = models.URLField(blank=True, null=True)
     order = models.PositiveIntegerField()
 
+    def __str__(self):
+        return f'{self.title} (Course #{self.course_id})'
+
 class Quiz(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='quizzes')
     question = models.TextField()
