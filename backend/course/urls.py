@@ -24,14 +24,16 @@ urlpatterns = [
     # Прогресс
     path('course/progress/', CourseProgressListCreateView.as_view(), name='course-progress'),
     path('progress/<int:pk>/update/', CourseProgressUpdateView.as_view(), name='course-progress-update'),
+    path('course/<int:course_id>/lesson/<int:lesson_id>/complete/', complete_lesson),
+    path('course/<int:course_id>/progress/', course_progress),
 
     # Уроки
-    path('courses/<int:course_id>/lessons/', LessonListCreateView.as_view(), name='lesson-list-create'),
-    path('lessons/<int:pk>/', LessonDetailView.as_view(), name='lesson-detail'),
+    path('course/<int:course_id>/lessons/', LessonListCreateView.as_view(), name='lesson-list-create'),
+    path('course/<int:course_id>/lesson/<int:pk>/', LessonDetailView.as_view(), name='lesson-detail'),
 
     # Квизы
-    path('lessons/<int:lesson_id>/quizzes/', QuizListCreateView.as_view(), name='quiz-list-create'),
-    path('quizzes/<int:pk>/', QuizDetailView.as_view(), name='quiz-detail'),
+    path('lesson/<int:lesson_id>/quizzes/', QuizListCreateView.as_view(), name='quiz-list-create'),
+    path('lesson/<int:lesson_id>/quizzes/<int:pk>/', QuizDetailView.as_view(), name='quiz-detail'),
 
     # challenge
     path('challenges/', ChallengeListView.as_view(), name='challenge-list'),

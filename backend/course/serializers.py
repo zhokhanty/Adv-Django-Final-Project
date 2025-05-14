@@ -22,7 +22,7 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description', 'creator', 'created_at', 'updated_at', 'duration_minutes', 'tags', 'lessons']
 
 class CourseProgressSerializer(serializers.ModelSerializer):
-    completed_lessons = serializers.PrimaryKeyRelatedField(many=True, queryset=Lesson.objects.all())
+    completed_lessons = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = CourseProgress
