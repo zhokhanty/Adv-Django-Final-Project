@@ -43,4 +43,3 @@ class CourseProgress(models.Model):
 
     class Meta:
         unique_together = ('user', 'course')
-
