@@ -73,16 +73,9 @@
 
 ---
 
-### **3. Community**
-
-* **User Profiles**
-
-  * Skills, badges, completed courses
-  * Downloadable, shareable resume
-  * LinkedIn integration
 
 
-### **4. Certification System**
+### **3. Certification System**
 
 * **Smart Certificates**
 
