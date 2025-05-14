@@ -4,7 +4,7 @@ from .models import Course, Lesson, Quiz
 
 from .models import Course, Lesson, Quiz, CourseProgress
 
-from .models import Course, Lesson, Quiz, CourseProgress, Challenge, ChallengeProgress
+from .models import Course, Lesson, Quiz, CourseProgress
 
 
 class QuizSerializer(serializers.ModelSerializer):

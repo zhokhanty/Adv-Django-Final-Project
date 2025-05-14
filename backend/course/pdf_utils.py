@@ -9,7 +9,8 @@ def generate_certificate_pdf(user, course):
     cert_dir = os.path.join(settings.MEDIA_ROOT, 'certificates')
     os.makedirs(cert_dir, exist_ok=True)
 
-    file_path = os.path.join(cert_dir, f"{user.username}_course_{course.id}.pdf")
+    filename = f"{user.username}_course_{course.id}.pdf"
+    file_path = os.path.join(cert_dir, filename)
 
     c = canvas.Canvas(file_path, pagesize=A4)
     width, height = A4
@@ -45,4 +46,4 @@ def generate_certificate_pdf(user, course):
 
     c.save()
 
-    return os.path.join(settings.MEDIA_URL, 'certificates', f"{user.username}_course_{course.id}.pdf")
+    return f"certificates/{filename}"

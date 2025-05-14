@@ -16,6 +16,8 @@ from .models import Course, CourseProgress
 from .pdf_utils import generate_certificate_pdf
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
+from django.conf import settings
+
 
 from rest_framework import viewsets
 
@@ -173,10 +175,14 @@ class CourseCertificateView(APIView):
         if not progress.completed_at:
             return Response({"detail": "Course not completed yet."}, status=status.HTTP_403_FORBIDDEN)
 
-        certificate_url = generate_certificate_pdf(request.user, course)
+        cert_relative_path = generate_certificate_pdf(request.user, course)
+        progress.certificate_file = cert_relative_path
+        progress.save()
+
         return Response({
-            "certificate_url": request.build_absolute_uri(certificate_url)
+            "certificate_url": request.build_absolute_uri(settings.MEDIA_URL + cert_relative_path)
         })
+
 
 
 

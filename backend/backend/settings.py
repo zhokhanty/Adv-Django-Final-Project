@@ -181,6 +181,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MONGO_URI = "mongodb://localhost:27017/"
 MONGO_DB_NAME = "skillsphere_ai"
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
 
 # settings.py
 from dotenv import load_dotenv
