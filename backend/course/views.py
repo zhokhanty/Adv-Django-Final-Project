@@ -11,7 +11,6 @@ from django.utils.timezone import now
 from rest_framework import viewsets
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
-<<<<<<< HEAD
 from django.conf import settings
 
 
@@ -21,9 +20,7 @@ from rest_framework import viewsets
 
 from rest_framework import viewsets
 
-=======
 from .pdf_utils import generate_certificate_pdf
->>>>>>> 8b36afb534a4a298b0e49ace885054b8eb8cd613
 
 from .models import (
     Course,
@@ -245,13 +242,6 @@ class CourseCertificateView(APIView):
             "certificate_url": request.build_absolute_uri(settings.MEDIA_URL + cert_relative_path)
         })
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 8b36afb534a4a298b0e49ace885054b8eb8cd613
 def certificate_share_view(request, username, course_id):
     User = get_user_model()
     user = get_object_or_404(User, username=username)

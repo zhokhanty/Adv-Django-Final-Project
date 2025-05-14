@@ -1,12 +1,6 @@
 from rest_framework import serializers
 from .models import Course, Lesson, Quiz, CourseProgress
 
-<<<<<<< HEAD
-from .models import Course, Lesson, Quiz, CourseProgress
-
-
-=======
->>>>>>> 8b36afb534a4a298b0e49ace885054b8eb8cd613
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
