@@ -1,9 +1,7 @@
 from rest_framework import serializers
-<<<<<<< HEAD
+from .models import Course, Lesson, Quiz
+
 from .models import Course, Lesson, Quiz, CourseProgress
-=======
-from .models import Course, Lesson, Quiz, CourseProgress, Challenge, ChallengeProgress
->>>>>>> a461d6aa94722e7934a74d9f31b09a7f1e1c23a6
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,35 +23,10 @@ class CourseSerializer(serializers.ModelSerializer):
         model = Course
         fields = ['id', 'title', 'description', 'creator', 'created_at', 'updated_at', 'duration_minutes', 'tags', 'lessons']
 
-<<<<<<< HEAD
-# serializers.py
+
 class CourseProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseProgress
         fields = '__all__'
         read_only_fields = ('user', 'completed_at', 'certificate_issued')
-=======
-class CourseProgressSerializer(serializers.ModelSerializer):
-    completed_lessons = serializers.PrimaryKeyRelatedField(many=True, queryset=Lesson.objects.all())
 
-    class Meta:
-        model = CourseProgress
-        fields = ['id', 'user', 'course', 'completed_lessons', 'completed_at']
-        read_only_fields = ['user']
-
-class ChallengeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Challenge
-        fields = '__all__'
-        read_only_fields = ('creator', 'created_at')
-
-    def create(self, validated_data):
-        validated_data.pop('creator', None)
-        return super().create(validated_data)
-
-class ChallengeProgressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ChallengeProgress
-        fields = '__all__'
-        read_only_fields = ('user', 'started_at', 'completed_at')
->>>>>>> a461d6aa94722e7934a74d9f31b09a7f1e1c23a6

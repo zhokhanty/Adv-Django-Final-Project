@@ -31,12 +31,9 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('', include('django_prometheus.urls')),
     path('api/', include('course.urls')),
-<<<<<<< HEAD
     path('c/', include('challenges.urls')),
     path('ai/', include('ai_tutor.urls'))
     
-=======
->>>>>>> a461d6aa94722e7934a74d9f31b09a7f1e1c23a6
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

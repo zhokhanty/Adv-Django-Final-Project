@@ -55,11 +55,8 @@ INSTALLED_APPS = [
     'requests',
     'course',
     'corsheaders',
-<<<<<<< HEAD
     'challenges',
     'ai_tutor',
-=======
->>>>>>> a461d6aa94722e7934a74d9f31b09a7f1e1c23a6
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -114,15 +111,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASE_NAME', 'final_db'),
         'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
-<<<<<<< HEAD
         'PASSWORD': os.getenv('DATABASE_PASSWORD', '0510'),
         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
         'PORT': os.getenv('DATABASE_PORT', 5433),
-=======
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', '1000tenge'),
-        'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-        'PORT': os.getenv('DATABASE_PORT', 5432),
->>>>>>> a461d6aa94722e7934a74d9f31b09a7f1e1c23a6
     }
 }
 
