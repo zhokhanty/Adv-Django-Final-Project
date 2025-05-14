@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'challenges',
     'ai_tutor',
+
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -114,6 +115,7 @@ DATABASES = {
         'PASSWORD': os.getenv('DATABASE_PASSWORD', '0510'),
         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
         'PORT': os.getenv('DATABASE_PORT', 5433),
+
     }
 }
 

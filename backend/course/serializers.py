@@ -1,7 +1,11 @@
 from rest_framework import serializers
 from .models import Course, Lesson, Quiz
 
+
 from .models import Course, Lesson, Quiz, CourseProgress
+
+from .models import Course, Lesson, Quiz, CourseProgress, Challenge, ChallengeProgress
+
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +33,3 @@ class CourseProgressSerializer(serializers.ModelSerializer):
         model = CourseProgress
         fields = '__all__'
         read_only_fields = ('user', 'completed_at', 'certificate_issued')
-

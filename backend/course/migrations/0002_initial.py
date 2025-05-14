@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
+
             model_name='course',
             name='creator',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='created_courses', to=settings.AUTH_USER_MODEL),

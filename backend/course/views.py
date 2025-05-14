@@ -17,6 +17,9 @@ from .pdf_utils import generate_certificate_pdf
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import get_user_model
 
+from rest_framework import viewsets
+
+
 
 from rest_framework import viewsets
 
@@ -26,6 +29,7 @@ from .models import (
     Lesson,
     Quiz,
     CourseProgress,
+
 )
 
 from .serializers import (
